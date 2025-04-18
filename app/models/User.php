@@ -36,7 +36,7 @@ class User {
     }
 
     public function login($login, $password) {
-        $query = "SELECT * FROM users WHERE username = ':login'";
+        $query = "SELECT (id, login, password) FROM users WHERE username = ':login'";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute([':login' => $login]);
         $user = $stmt->fetch();

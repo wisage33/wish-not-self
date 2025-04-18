@@ -30,7 +30,10 @@ switch ($action) {
         $controller->showRegisterForm();
         break;
     case 'doRegister':
-        echo 
         $controller->registerUser();
+        break;
+    case 'doLogin':
+        
+        break;
 };
 

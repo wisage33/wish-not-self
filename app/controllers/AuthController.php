@@ -23,9 +23,22 @@ class AuthController {
             $password = htmlspecialchars($_POST['password']);
             if($this->userModel->register($login, $email, $password)) {
                 echo "Success";
+                return header("location: index.php?action=login");
             } else {
                 echo "Error";
             };
+        }
+    }
+
+    public function loginUser() {
+        if($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $login = htmlspecialchars($_GET['login']);
+            $password = htmlspecialchars($_GET['password']);
+            if($this->userModel->login($login, $password)) {
+                header('location: index.php?action=login');
+            } else {
+                echo "Error";
+            }
         }
     }
 }
